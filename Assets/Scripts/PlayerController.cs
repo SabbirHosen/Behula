@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public bool isGameOver = false;
     public GameObject GameOverPanel, scoreText;
     public Text FinalScoreText, HighScoreText;
+    [SerializeField] private AudioSource jumpSound;
+    [SerializeField] private AudioSource deadOverSound;
     // Start is called before the first frame update
 
     void Start()
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown("space") && canJump && !isGameOver)
         {
+            jumpSound.Play();
             rb2d.velocity = Vector3.up * 7.5f;
             anim.SetTrigger("jump");
             jumpCount += 1;
@@ -46,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
     public void GameOver()
     {
+        deadOverSound.Play();
         isGameOver = true;
         anim.SetTrigger("death");
         StopCoroutine("IncreaseGameSpeed");
@@ -105,6 +109,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canJump && !isGameOver)
         {
+            jumpSound.Play();
             rb2d.velocity = Vector3.up * 7.5f;
             anim.SetTrigger("jump");
             jumpCount += 1;

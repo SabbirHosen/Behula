@@ -6,7 +6,7 @@ public class AudioScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private GameObject[] MusicObject;
+    private GameObject[] MusicObject, MusicObjectButtonPress, MusicObjectButtonPressOver;
 
     private void Awake()
     {
@@ -14,6 +14,18 @@ public class AudioScript : MonoBehaviour
         if (MusicObject.Length >= 2)
         {
             Destroy(MusicObject[1]);
+        }
+
+        MusicObjectButtonPress = GameObject.FindGameObjectsWithTag("ButtonPress");
+        if (MusicObjectButtonPress.Length >= 4)
+        {
+            Destroy(MusicObjectButtonPress[0]);
+        }
+
+        MusicObjectButtonPressOver = GameObject.FindGameObjectsWithTag("ButtonPressOver");
+        if (MusicObjectButtonPressOver.Length >= 4)
+        {
+            Destroy(MusicObjectButtonPressOver[0]);
         }
     }
     void Start()

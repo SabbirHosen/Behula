@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - BottomDetector
   - BGMusic
+  - ButtonPress
+  - ButtonPressOver
   layers:
   - Default
   - TransparentFX
